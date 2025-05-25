@@ -1,0 +1,6 @@
+{"source": "Invoice.pdf", "type": "pdf", "content": "Invoice #1001 \nCustomer: John Doe \nAmount: $250.00 \nDate: 2024-05-01"}
+{"source": "Report.pdf", "type": "pdf", "content": "Quarterly Report \nQ1 Earnings Increased by 12% \nCEO: Jane Smith"}
+{"source": "Summary.pdf", "type": "pdf", "content": "Meeting Summary \nProject: AI Compass \nNext Steps: Embed vector database"}
+{"source": "email1.eml", "type": "email", "subject": "Project Kickoff", "content": "Hi team,\nWe will start the AI Compass project on Monday."}
+{"source": "email2.eml", "type": "email", "subject": "Reminder: Submit Report", "content": "Please submit your quarterly report by Friday."}
+{"source": "email3.eml", "type": "email", "subject": "Schedule Sync", "content": "Can we schedule a sync to discuss Qdrant embeddings?"}
