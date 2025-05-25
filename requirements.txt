@@ -1,0 +1,9 @@
+streamlit
+openai
+langchain
+qdrant-client
+sentence-transformers
+pymupdf
+duckdb
+neo4j
+pandas

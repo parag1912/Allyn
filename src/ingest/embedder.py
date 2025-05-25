@@ -1,0 +1,1 @@
+# Code to embed text chunks and upload to Qdrant
