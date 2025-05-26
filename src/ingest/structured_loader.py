@@ -1,16 +1,28 @@
-# Code to load structured CSVs into DuckDB
 import duckdb
 import pandas as pd
 
 # Load CSV files
-customers = pd.read_csv("data/structured/customer.csv")
-orders = pd.read_csv("data/structured/order.csv")
-emissions = pd.read_csv("data/structured/emissions.csv")
+customers_df = pd.read_csv("data/structured/customer.csv")
+orders_df = pd.read_csv("data/structured/order.csv")
+emissions_df = pd.read_csv("data/structured/emissions.csv")
 
-# Register DataFrames as DuckDB tables
-duckdb.sql("CREATE TABLE customers AS SELECT * FROM customers")
-duckdb.sql("CREATE TABLE orders AS SELECT * FROM orders")
-duckdb.sql("CREATE TABLE emissions AS SELECT * FROM emissions")
+# Connect to persistent DuckDB file
+con = duckdb.connect("allyin.duckdb")
 
-# Sample query
-print(duckdb.sql("SELECT * FROM customers LIMIT 10").df())
+# Drop existing tables if they exist
+con.execute("DROP TABLE IF EXISTS customers")
+con.execute("DROP TABLE IF EXISTS orders")
+con.execute("DROP TABLE IF EXISTS emissions")
+
+# Register and save tables
+con.register("customers_df", customers_df)
+con.register("orders_df", orders_df)
+con.register("emissions_df", emissions_df)
+
+con.execute("CREATE TABLE customers AS SELECT * FROM customers_df")
+con.execute("CREATE TABLE orders AS SELECT * FROM orders_df")
+con.execute("CREATE TABLE emissions AS SELECT * FROM emissions_df")
+
+# Optional: check
+print(con.sql("SELECT * FROM customers LIMIT 5").df())
+print("✅ Tables saved to allyin.duckdb")

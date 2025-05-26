@@ -7,3 +7,5 @@ pymupdf
 duckdb
 neo4j
 pandas
+langchain-openai
+
